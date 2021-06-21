@@ -29,7 +29,7 @@ def evolve_cell(alive: bool, friends: int):
     return friends == 3 or (alive and friends == 2)
 
 
-def count_firends(grid: list, position):
+def count_friends(grid: list, position):
     x, y = position
     friend_cells = [(x-1, y-1), (x-1, y), (x-1, y+1),
                     (x, y-1), (x, y+1),
@@ -63,7 +63,7 @@ def evolve(world: list):
     for row_x in range(x_len):
         for col_y in range(y_len):
             cell = world[row_x][col_y]
-            friends = count_firends(world, (row_x, col_y))
+            friends = count_friends(world, (row_x, col_y))
             new_grid[row_x][col_y] = 1 if evolve_cell(cell, friends) else 0
     return new_grid
 
